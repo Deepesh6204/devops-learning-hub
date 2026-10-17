@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Learning Hub</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="/" class="logo">DevOps Hub</a>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/python">Python</a>
+        <a href="/docker">Docker</a>
+        <a href="/aws">AWS EC2</a>
+        <a href="/about">About</a>
+    </div>
+</nav>
+
+<main>
+
+    <section class="hero">
+        <p class="tag">YOUR FIRST CLOUD PROJECT</p>
+
+        <h1>Learn. Build. <span>Deploy.</span></h1>
+
+        <p class="description">
+            Start your DevOps journey with Python, HTML, CSS,
+            Docker, GitHub and AWS EC2.
+        </p>
+
+        <a href="#projects" class="button">
+            Explore Project
+        </a>
+    </section>
+
+    <section class="projects" id="projects">
+
+        <a href="/python" class="card">
+            <span class="number">01</span>
+            <h2>Python</h2>
+            <p>Learn how Python and Flask power your website.</p>
+            <span class="card-link">Explore Python →</span>
+        </a>
+
+        <a href="/docker" class="card">
+            <span class="number">02</span>
+            <h2>Docker</h2>
+            <p>Package your application inside a Docker container.</p>
+            <span class="card-link">Explore Docker →</span>
+        </a>
+
+        <a href="/aws" class="card">
+            <span class="number">03</span>
+            <h2>AWS EC2</h2>
+            <p>Deploy your application on a cloud server.</p>
+            <span class="card-link">Explore AWS →</span>
+        </a>
+
+    </section>
+
+    {% if active_section %}
+
+    <section class="details">
+
+        {% if active_section == "python" %}
+            <h2>Python and Flask</h2>
+            <p>Python handles the backend logic of this website.
+               Flask connects Python functions to website URLs.</p>
+            <pre>app = Flask(__name__)</pre>
+
+        {% elif active_section == "docker" %}
+            <h2>Docker Containers</h2>
+            <p>Docker packages your application and its dependencies
+               so it can run consistently on different machines.</p>
+            <pre>docker build -t devops-hub .</pre>
+
+        {% elif active_section == "aws" %}
+            <h2>AWS EC2 Deployment</h2>
+            <p>Amazon EC2 provides a cloud server where you can run
+               your Dockerized website.</p>
+            <pre>docker run -d -p 80:5000 devops-hub</pre>
+
+        {% elif active_section == "about" %}
+            <h2>About DevOps Learning Hub</h2>
+            <p>This beginner project demonstrates Python, HTML, CSS,
+               GitHub, Docker and AWS EC2 deployment.</p>
+        {% endif %}
+
+        <a href="/" class="button">Back to Home</a>
+
+    </section>
+
+    {% endif %}
+
+</main>
+
+<footer>
+    Built with Python, HTML and CSS | DevOps Learning Hub
+</footer>
+
+</body>
+</html>
